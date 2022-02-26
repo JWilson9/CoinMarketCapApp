@@ -1,15 +1,18 @@
-import axios from 'src/utils/axios';
+// @flow
 
-/**
- * API to fetch list of latest crypto currencies
- * @returns {Array}
- */
-export const fetchCryptoCurrencyList = async () => {
+import axios from '../utils/axios';
+import type { CryptoListType, CyptoDetailsType } from './CryptoApiTypes';
+
+export const fetchCryptoCurrencyList = async (): Promise<CryptoListType> => {
   const { data } = await axios.get('/v1/cryptocurrency/listings/latest');
   return data?.data; // API's response returns object array with data and status attributes. Just return data for now
 };
 
-export const fetchCryptoCurrencyItemInfo = async () => {
-  const { data } = await axios.get('/v1/cryptocurrency/n0id519evd/id/2268');
-  return data; // API's response returns object array with data and status attributes. Just return data for now
+export const fetchCurrency = async (id: number): Promise<CyptoDetailsType> => {
+  const { data } = await axios.get('/v2/cryptocurrency/info', {
+    params: { id },
+  });
+
+  console.log(data?.data[id]);
+  return data?.data;
 };

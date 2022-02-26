@@ -42,7 +42,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://sandbox-api.coinmarketcap.com",
+  "proxy": "https://pro-api.coinmarketcap.com",
   "devDependencies": {
     "flow-bin": "^0.172.0"
   }
