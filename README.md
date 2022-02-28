@@ -8,6 +8,10 @@ In the project directory, you can run:
 
 ### `npm start`
 
+### Ensure you have the chrome extension metamask and you are logged in for it work correctly
+#### When viewing the code, please search "@builtin javascript", select TypeScript and JavaScript Language Features and disable it (as this project uses flow)
+
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
