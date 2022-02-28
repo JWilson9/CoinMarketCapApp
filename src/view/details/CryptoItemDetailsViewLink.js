@@ -10,17 +10,15 @@ type Props = $ReadOnly<{
   links: Array<string>,
 }>;
 
-export default function CryptoItemDetailsWebsite({
+export default function CryptoItemDetailsViewLink({
   label,
   links,
 }: Props): React.MixedElement {
-  // TODO: stlye the component better?
-
   return (
     <>
       {links.map((item, id) => {
         return (
-          <Box>
+          <Box key={id}>
             <Typography variant="body2" color="text.secondary">
               {label}
             </Typography>

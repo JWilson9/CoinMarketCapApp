@@ -3,7 +3,7 @@
 import { useQuery } from 'react-query';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchCurrency } from '../api';
+import { fetchCurrency } from '../../api';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
@@ -11,14 +11,16 @@ import Box from '@mui/material/Box';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { WEBSITE_LINKS } from '../api/CryptoApiTypes';
-import CryptoItemDetailsWebsite from './CryptoItemDetailsWebsite';
+import { WEBSITE_LINKS } from '../../api/CurrencyApiTypes';
+import CryptoItemDetailsViewLink from './CryptoItemDetailsViewLink';
 
 import { Link } from 'react-router-dom';
 
-// import FetchRenderer from './common/CryptoFetchRendererCommon';
+type Props = $ReadOnly<{}>;
 
-export default function CryptoItemDetails(): React.MixedElement {
+export default function CurrencyItemDetailsView(
+  props: Props
+): React.MixedElement {
   const { id } = useParams();
 
   const { data, error, isLoading } = useQuery(['crypto-item-details', id], () =>
@@ -40,7 +42,7 @@ export default function CryptoItemDetails(): React.MixedElement {
       <CardHeader
         avatar={<Avatar alt={data[id]?.name} src={data[id]?.logo} />}
         title={data[id]?.name ?? 'N/A'}
-        subheader={`ID: ${id}`}
+        subheader={`ID: ${id ?? 0}`}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -48,12 +50,11 @@ export default function CryptoItemDetails(): React.MixedElement {
         </Typography>
         <Box sx={{ paddingTop: 4, paddingBottom: 4 }}>
           {websiteRows.map((row) => {
-            console.log(row);
             return (
-              <CryptoItemDetailsWebsite
+              <CryptoItemDetailsViewLink
                 key={row}
                 label={row}
-                links={data[id]?.urls[row]}
+                links={data[id]?.urls[row] ?? []}
               />
             );
           })}

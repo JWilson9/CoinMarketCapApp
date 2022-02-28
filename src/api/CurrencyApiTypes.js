@@ -1,11 +1,9 @@
 // @flow
 
-// TODO: make this types nullable
-
 type CryptoItemPrice = {
   [string]: {
-    price: number,
-    percent_change_24h: number,
+    price: ?number,
+    percent_change_24h: ?number,
   },
 };
 
@@ -18,19 +16,19 @@ export const WEBSITE_LINKS = {
 type ItemWebsiteType = $Keys<typeof WEBSITE_LINKS>;
 
 export type CryptoListType = {
-  id: number,
-  name: string,
-  symbol: string,
-  quote: CryptoItemPrice,
-  priceChange: string,
+  id: ?number,
+  name: ?string,
+  symbol: ?string,
+  quote: ?CryptoItemPrice,
+  priceChange: ?string,
 };
 
 export type CyptoDetailsType = {
-  id: number,
-  name: string,
-  description: string,
-  logo: string,
+  id: ?number,
+  name: ?string,
+  description: ?string,
+  logo: ?string,
   urls: {
-    [ItemWebsiteType]: Array<string>,
+    [ItemWebsiteType]: ?Array<string>,
   },
 };

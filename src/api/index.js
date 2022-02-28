@@ -1,7 +1,7 @@
 // @flow
 
 import axios from '../utils/axios';
-import type { CryptoListType, CyptoDetailsType } from './CryptoApiTypes';
+import type { CryptoListType, CyptoDetailsType } from './CurrencyApiTypes';
 
 export const fetchCryptoCurrencyList = async (): Promise<CryptoListType> => {
   const { data } = await axios.get('/v1/cryptocurrency/listings/latest');

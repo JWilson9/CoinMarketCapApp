@@ -1,18 +1,17 @@
 // @flow
 
 import { useQuery } from 'react-query';
-import { fetchCryptoCurrencyList } from '../api';
-
+import { fetchCryptoCurrencyList } from '../../api';
 import ListItem from '@mui/material/ListItem';
-
 import CircularProgress from '@mui/material/CircularProgress';
-
-import CryptoListItem from './CryptoListItem';
-import * as React from 'react';
-
+import CurrencyListItem from './CurrencyListItem';
 import CardContent from '@mui/material/CardContent';
 
-export default function Home(): React.MixedElement {
+import * as React from 'react';
+
+type Props = $ReadOnly<{}>;
+
+export default function CryptoList(props: Props): React.MixedElement {
   const { data, error, isLoading } = useQuery(
     'crypto-list',
     fetchCryptoCurrencyList
@@ -31,7 +30,7 @@ export default function Home(): React.MixedElement {
       {data.map((data) => {
         return (
           <ListItem key={data.id}>
-            <CryptoListItem item={data} />
+            <CurrencyListItem item={data} />
           </ListItem>
         );
       })}

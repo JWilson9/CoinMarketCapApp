@@ -24,12 +24,12 @@ export default function WalletCardInfo({
       ) : (
         <Box>
           <Box>
-            <Typography variant="body2" component="body2">
+            <Typography variant="body2" component="div">
               {metaMaskAccount}
             </Typography>
           </Box>
           <Box>
-            <Typography variant="body2" component="body2">
+            <Typography variant="body2" component="div">
               Balance: {userBalance}
             </Typography>
           </Box>

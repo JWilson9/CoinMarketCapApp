@@ -10,7 +10,9 @@ import WalletCardInfo from './WalletCardInfo';
 
 import * as React from 'react';
 
-export default function WalletCard(): React.MixedElement {
+type Props = $ReadOnly<{}>;
+
+export default function WalletCard(props: Props): React.MixedElement {
   const [errorMessage, setErrorMessage] = useState(null);
   const [metaMaskAccount, setMetaMaskAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);

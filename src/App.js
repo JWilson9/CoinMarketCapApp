@@ -3,12 +3,12 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Container from '@mui/material/Container';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CryptoList from './components/CryptoList';
-import CryptoItemDetails from './components/CryptoItemDetails';
+import CryptoList from './view/listing/CryptoList';
+import CurrencyItemDetailsView from './view/details/CurrencyItemDetailsView';
 import Box from '@mui/material/Box';
 import * as React from 'react';
 
-import WalletCard from './components/WalletCard';
+import WalletCard from './view/WalletCard';
 import Card from '@mui/material/Card';
 
 const queryClient = new QueryClient();
@@ -26,12 +26,10 @@ export default function App(): React.MixedElement {
             <Card sx={{ minWidth: 560 }} raised={true}>
               <Routes>
                 <Route exact path="/" element={<CryptoList />} />
-              </Routes>
-              <Routes>
                 <Route
                   exact
                   path="/crypto/:id"
-                  element={<CryptoItemDetails />}
+                  element={<CurrencyItemDetailsView />}
                 />
               </Routes>
             </Card>
