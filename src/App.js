@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Container from '@mui/material/Container';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CryptoList from './view/listing/CryptoList';
+import CurrencyList from './view/listing/CurrencyList';
 import CurrencyItemDetailsView from './view/details/CurrencyItemDetailsView';
 import Box from '@mui/material/Box';
 import * as React from 'react';
@@ -25,7 +25,7 @@ export default function App(): React.MixedElement {
           <Container maxWidth="sm" sx={{ padding: 10 }}>
             <Card sx={{ minWidth: 560 }} raised={true}>
               <Routes>
-                <Route exact path="/" element={<CryptoList />} />
+                <Route exact path="/" element={<CurrencyList />} />
                 <Route
                   exact
                   path="/crypto/:id"

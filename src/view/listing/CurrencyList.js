@@ -11,7 +11,7 @@ import * as React from 'react';
 
 type Props = $ReadOnly<{}>;
 
-export default function CryptoList(props: Props): React.MixedElement {
+export default function CurrencyList(props: Props): React.MixedElement {
   const { data, error, isLoading } = useQuery(
     'crypto-list',
     fetchCryptoCurrencyList
