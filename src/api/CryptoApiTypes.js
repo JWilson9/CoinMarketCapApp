@@ -1,11 +1,27 @@
 // @flow
 
 // TODO: make this types nullable
+
+type CryptoItemPrice = {
+  [string]: {
+    price: number,
+    percent_change_24h: number,
+  },
+};
+
+export const WEBSITE_LINKS = {
+  facebook: 'facebook',
+  twitter: 'twitter',
+  website: 'website',
+};
+
+type ItemWebsiteType = $Keys<typeof WEBSITE_LINKS>;
+
 export type CryptoListType = {
   id: number,
   name: string,
   symbol: string,
-  price: string,
+  quote: CryptoItemPrice,
   priceChange: string,
 };
 
@@ -14,5 +30,7 @@ export type CyptoDetailsType = {
   name: string,
   description: string,
   logo: string,
-  // links: Array
+  urls: {
+    [ItemWebsiteType]: Array<string>,
+  },
 };

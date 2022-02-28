@@ -7,7 +7,7 @@ type Props = $Readonly<{
   children: React.MixedElement,
 }>;
 
-export default function CryptoFetchRendererCommon({
+export default function CryptoFetchRenderer({
   error,
   isLoading,
   children,

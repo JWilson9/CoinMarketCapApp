@@ -6,6 +6,13 @@ import { useParams } from 'react-router-dom';
 import { fetchCurrency } from '../api';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { WEBSITE_LINKS } from '../api/CryptoApiTypes';
+import CryptoItemDetailsWebsite from './CryptoItemDetailsWebsite';
 
 import { Link } from 'react-router-dom';
 
@@ -14,11 +21,12 @@ import { Link } from 'react-router-dom';
 export default function CryptoItemDetails(): React.MixedElement {
   const { id } = useParams();
 
-  const { data, error, isLoading } = useQuery('crypto-cur-1', () =>
+  const { data, error, isLoading } = useQuery(['crypto-item-details', id], () =>
     fetchCurrency(id)
   );
 
-  // TODO: Create a common component to render the different states from the api
+  const websiteRows = Object.keys(WEBSITE_LINKS);
+
   if (error) {
     return <div>An error occurred: {error?.message}</div>;
   }
@@ -27,33 +35,36 @@ export default function CryptoItemDetails(): React.MixedElement {
     return <CircularProgress />;
   }
 
-  /*
-o Logo
-o Name
-o Description
-o Links out to Twitter and any other sites such as website, telegram
-
-
-  */
-
-  /*
-o Logo
-o Name
-o Description
-o Links out to Twitter and any other sites such as website, telegram
-  */
-
-  console.log(data[id]?.name);
-
   return (
     <>
-      <Link to="/">
-        <Button variant="text">Back to Home</Button>
-      </Link>
-      <div> Crypto details {id}</div>
-      <div> Crypto Name {data[id]?.name}</div>
-      <div> Crypto Logo {data[id]?.logo}</div>
-      <div> Crypto Description {data[id]?.logo}</div>
+      <CardHeader
+        avatar={<Avatar alt={data[id]?.name} src={data[id]?.logo} />}
+        title={data[id]?.name ?? 'N/A'}
+        subheader={`ID: ${id}`}
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {data[id]?.description}
+        </Typography>
+        <Box sx={{ paddingTop: 4, paddingBottom: 4 }}>
+          {websiteRows.map((row) => {
+            console.log(row);
+            return (
+              <CryptoItemDetailsWebsite
+                key={row}
+                label={row}
+                links={data[id]?.urls[row]}
+              />
+            );
+          })}
+        </Box>
+
+        <Box>
+          <Link to="/" style={{ textDecoration: 'none', width: '100%' }}>
+            <Button variant="text">Back to Home</Button>
+          </Link>
+        </Box>
+      </CardContent>
     </>
   );
 }

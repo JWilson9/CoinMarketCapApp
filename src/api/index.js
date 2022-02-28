@@ -5,7 +5,7 @@ import type { CryptoListType, CyptoDetailsType } from './CryptoApiTypes';
 
 export const fetchCryptoCurrencyList = async (): Promise<CryptoListType> => {
   const { data } = await axios.get('/v1/cryptocurrency/listings/latest');
-  return data?.data; // API's response returns object array with data and status attributes. Just return data for now
+  return data?.data;
 };
 
 export const fetchCurrency = async (id: number): Promise<CyptoDetailsType> => {
@@ -13,6 +13,5 @@ export const fetchCurrency = async (id: number): Promise<CyptoDetailsType> => {
     params: { id },
   });
 
-  console.log(data?.data[id]);
   return data?.data;
 };

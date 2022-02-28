@@ -6,14 +6,15 @@ import { fetchCryptoCurrencyList } from '../api';
 import ListItem from '@mui/material/ListItem';
 
 import CircularProgress from '@mui/material/CircularProgress';
-import List from '@mui/material/List';
+
 import CryptoListItem from './CryptoListItem';
 import * as React from 'react';
 
+import CardContent from '@mui/material/CardContent';
+
 export default function Home(): React.MixedElement {
-  // TODO: Put key into a constants file
   const { data, error, isLoading } = useQuery(
-    'crypto-cur',
+    'crypto-list',
     fetchCryptoCurrencyList
   );
 
@@ -26,16 +27,14 @@ export default function Home(): React.MixedElement {
   }
 
   return (
-    <nav aria-label="main mailbox folders">
-      <List>
-        {data.map((data) => {
-          return (
-            <ListItem key={data.id}>
-              <CryptoListItem item={data} />
-            </ListItem>
-          );
-        })}
-      </List>
-    </nav>
+    <CardContent>
+      {data.map((data) => {
+        return (
+          <ListItem key={data.id}>
+            <CryptoListItem item={data} />
+          </ListItem>
+        );
+      })}
+    </CardContent>
   );
 }
