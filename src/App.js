@@ -8,7 +8,7 @@ import CurrencyItemDetailsView from './view/details/CurrencyItemDetailsView';
 import Box from '@mui/material/Box';
 import * as React from 'react';
 
-import WalletCard from './view/WalletCard';
+import WalletCard from './view/metamask/WalletCard';
 import Card from '@mui/material/Card';
 
 const queryClient = new QueryClient();
